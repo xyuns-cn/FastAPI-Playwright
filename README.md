@@ -13,7 +13,8 @@
 ## 项目结构
 
 ```
-FastAPI-Playwright-Controller/
+FastAPI-Playwright/
+├── Dockerfile           # Dockerfile文件
 ├── main.py              # 主程序入口
 ├── requirements.txt     # Python依赖文件
 └── README.md            # 项目说明文件
@@ -23,8 +24,8 @@ FastAPI-Playwright-Controller/
 
 1. 克隆项目仓库:
     ```sh
-    git clone https://github.com/your-username/FastAPI-Playwright-Controller.git
-    cd FastAPI-Playwright-Controller
+    git clone https://github.com/xyuns-cn/FastAPI-Playwright.git
+    cd FastAPI-Playwright
     ```
 
 2. 安装依赖:
