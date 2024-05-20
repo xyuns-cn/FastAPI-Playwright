@@ -53,6 +53,7 @@ python main.py
 ```json
 {
   "url": "https://example.com",
+  "browser": "chromium",         // 使用的浏览器类型，可以是'chromium', 'firefox', 或 'webkit'
   "screenshot": true,
   "search_in": {
     "search": true,
