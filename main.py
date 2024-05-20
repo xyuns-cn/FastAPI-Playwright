@@ -35,6 +35,7 @@ class BodyConfig(BaseModel):
 
 class RequestBody(BaseModel):
     url: str
+    browser: str = Field(default="chromium", description="要使用的浏览器类型: 'chromium', 'firefox', 或 'webkit'")
     screenshot: bool = False
     search_in: SearchIn = SearchIn()
     items_config: ItemsConfig = ItemsConfig()
@@ -132,7 +133,10 @@ async def get_body_content(page, body_selectors, title_selectors, date_selectors
 async def get_page_info(request_data: RequestBody):
     page_info = {}
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser_type = getattr(p, request_data.browser, None)
+        if not browser_type:
+            raise HTTPException(status_code=400, detail="无效的浏览器类型")
+        browser = await browser_type.launch(headless=True)
         page = await browser.new_page()
 
         await page.goto(request_data.url)
